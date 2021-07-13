@@ -13,5 +13,17 @@ class BeemBaseServiceProvider extends ServiceProvider
                 __DIR__.'/../config/beem.php' => config_path('beem.php')
             ], 'beem-config');
         }
+
+        $this->registerResources();
+    }
+
+    private function registerResources()
+    {
+        $this->registerFacades();
+    }
+
+    private function registerFacades()
+    {
+        $this->app->singleton('Beem', fn($app) => new \Bryceandy\Beem\Beem);
     }
 }
