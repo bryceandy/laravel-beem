@@ -26,7 +26,7 @@ For this we need to publish the package's configuration file using:
 php artisan vendor:publish --tag=beem-config
 ```
 
-After you have obtained your Beem vendor account and obtained the keys on the dashboard, add their values in the `.env` variables
+After you have created a Beem vendor account and obtained the keys on the dashboard, add their values in the `.env` variables
 
 ```dotenv
 BEEM_KEY=yourApiKey
