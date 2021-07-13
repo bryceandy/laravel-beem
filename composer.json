@@ -11,5 +11,15 @@
     "require": {},
     "require-dev": {
         "orchestra/testbench": "^6.19"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bryceandy\\Beem\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bryceandy\\Beem\\Tests\\": "tests/"
+        }
     }
 }
