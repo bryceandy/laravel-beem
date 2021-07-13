@@ -8,5 +8,8 @@
             "email": "hello@bryceandy.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^6.19"
+    }
 }
