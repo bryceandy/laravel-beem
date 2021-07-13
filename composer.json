@@ -24,5 +24,12 @@
         "psr-4": {
             "Bryceandy\\Beem\\Tests\\": "tests/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bryceandy\\Beem\\BeemBaseServiceProvider"
+            ]
+        }
     }
 }
