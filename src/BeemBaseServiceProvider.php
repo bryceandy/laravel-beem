@@ -8,8 +8,10 @@ class BeemBaseServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/beem.php' => config_path('beem.php')
-        ], 'beem-config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/beem.php' => config_path('beem.php')
+            ], 'beem-config');
+        }
     }
 }
