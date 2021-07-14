@@ -63,3 +63,17 @@ The default sender name is 'INFO'.
 ```php
 Beem::sms('Another message', $recipients, 'SENDER-NAME');
 ```
+
+For scheduled SMS, you can use a datetime value or `Carbon\Carbon` instance, but make sure the timezone is GMT+0
+
+```php
+$time = now()->addHours(10);
+
+Beem::smsWithSchedule('Reminder message', $recipients, $time);
+```
+
+You can also check the remaining SMS balance using
+
+```php
+Beem::smsBalance()->json();
+```
