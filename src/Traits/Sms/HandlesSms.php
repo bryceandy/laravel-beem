@@ -158,4 +158,19 @@ trait HandlesSms
             compact('message', 'sms_title')
         );
     }
+
+    /**
+     * @param string $templateId
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function deleteSmsTemplate(string $templateId): Response
+    {
+        return $this->call(
+            "https://apisms.beem.africa/public/v1/sms-templates/$templateId",
+            'DELETE'
+        );
+    }
 }

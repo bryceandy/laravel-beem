@@ -110,9 +110,12 @@ $smsTitle = 'Greetings';
 Beem::addSmsTemplate($message, $smsTitle);
 ```
 
-SMS templates can be edited if you have their `template_id`
+SMS templates can be edited or deleted if you have their `template_id`
 
 ```php 
 // Template IDs can be obtained from the call above - Beem::smsTemplates()->json()
-Beem::editSmsTemplate($templateId, $message, $smsTitle)
+
+Beem::editSmsTemplate($templateId, $message, $smsTitle);
+
+Beem::deleteSmsTemplate($templateId);
 ```
