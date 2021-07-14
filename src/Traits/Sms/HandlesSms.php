@@ -140,4 +140,22 @@ trait HandlesSms
             compact('message', 'sms_title')
         );
     }
+
+    /**
+     * @param string $template_id
+     * @param string $message
+     * @param string $sms_title
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function editSmsTemplate(string $template_id, string $message, string $sms_title): Response
+    {
+        return $this->call(
+            "https://apisms.beem.africa/public/v1/sms-templates/$template_id",
+            'PUT',
+            compact('message', 'sms_title')
+        );
+    }
 }
