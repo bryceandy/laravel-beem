@@ -6,7 +6,7 @@ use Bryceandy\Beem\Exceptions\ConfigurationUnavailableException;
 use Bryceandy\Beem\Facades\Beem;
 use Bryceandy\Beem\Tests\TestCase;
 
-class SmsTest extends TestCase
+class ConfigurationUnavailableTest extends TestCase
 {
     /** @test */
     public function it_requires_authentication_credentials_to_send_sms()
