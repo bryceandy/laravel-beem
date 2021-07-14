@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": "c893d701-e1d8-4b00-8634-8c464e56ba11",
+      "senderid": "testing",
+      "sample_content": "123",
+      "status": "pending",
+      "created": "2021-07-08T14:07:56.000Z"
+    }
+  ],
+  "pagination": {
+    "totalItems": 1,
+    "currentPage": 1,
+    "pageSize": 25,
+    "totalPages": 1,
+    "startPage": 1,
+    "endPage": 1,
+    "startIndex": 0,
+    "endIndex": 1,
+    "pages": [
+      1
+    ]
+  }
+}

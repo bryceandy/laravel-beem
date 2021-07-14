@@ -73,4 +73,24 @@ trait HandlesSms
             'GET'
         );
     }
+
+    /**
+     * @param string|null $q
+     * @param string|null $status
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function smsSenderNames(string $q = null, string $status = null): Response
+    {
+        $data = collect(compact('q', 'status'))
+            ->filter(fn($datum) => ! is_null($datum))
+            ->all();
+
+        return $this->call(
+            'https://apisms.beem.africa/public/v1/sender-names',
+            'GET',
+            $data
+        );
+    }
 }

@@ -77,3 +77,9 @@ You can also check the remaining SMS balance using
 ```php
 Beem::smsBalance()->json();
 ```
+
+Fetching SMS sender names on your vendor account
+
+```php 
+Beem::smsSenderNames()->json();
+```

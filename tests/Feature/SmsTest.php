@@ -22,7 +22,11 @@ class SmsTest extends TestCase
             'https://apisms.beem.africa/public/v1/vendors/balance' => Http::response(json_encode(
                 file_get_contents(__DIR__ . '/../stubs/sms_balance_response_200.json'),
                 true
-            ))
+            )),
+            'https://apisms.beem.africa/public/v1/sender-names' => Http::response(json_encode(
+                file_get_contents(__DIR__ . '/../stubs/sms_sender_names_response_200.json'),
+                true
+            )),
         ]);
     }
 
@@ -64,6 +68,13 @@ class SmsTest extends TestCase
     public function it_can_check_sms_balance()
     {
         $request = Beem::smsBalance();
+
+        $this->assertTrue($request->successful());
+    }
+
+    public function it_can_fetch_sender_names()
+    {
+        $request = Beem::smsSenderNames();
 
         $this->assertTrue($request->successful());
     }
