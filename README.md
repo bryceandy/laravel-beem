@@ -92,3 +92,11 @@ $sampleMessage = 'A sample message';
 
 Beem::requestSmsSenderName($name, $sampleMessage);
 ```
+
+#### SMS templates
+
+The following can be used to view all SMS templates for the vendor
+
+```php
+Beem::smsTemplates()->json();
+```

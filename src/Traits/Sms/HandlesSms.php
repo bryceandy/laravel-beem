@@ -110,4 +110,17 @@ trait HandlesSms
             compact('senderid', 'sample_content')
         );
     }
+
+    /**
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function smsTemplates(): Response
+    {
+        return $this->call(
+            'https://apisms.beem.africa/public/v1/sms-templates',
+            'GET'
+        );
+    }
 }
