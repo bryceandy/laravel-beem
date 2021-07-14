@@ -123,4 +123,21 @@ trait HandlesSms
             'GET'
         );
     }
+
+    /**
+     * @param string $message
+     * @param string $sms_title
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function addSmsTemplate(string $message, string $sms_title): Response
+    {
+        return $this->call(
+            'https://apisms.beem.africa/public/v1/sms-templates',
+            'POST',
+            compact('message', 'sms_title')
+        );
+    }
 }

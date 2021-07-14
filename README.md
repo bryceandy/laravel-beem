@@ -100,3 +100,12 @@ The following can be used to view all SMS templates for the vendor
 ```php
 Beem::smsTemplates()->json();
 ```
+
+New SMS templates can also be added:
+
+```php 
+$message = 'Have a nice day!';
+$smsTitle = 'Greetings';
+
+Beem::addSmsTemplate($message, $smsTitle);
+```
