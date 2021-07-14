@@ -43,4 +43,16 @@ class SmsTest extends TestCase
 
         $this->assertTrue($request->successful());
     }
+
+    /** @test */
+    public function it_can_send_a_scheduled_sms()
+    {
+        $request = Beem::smsWithSchedule(
+            'Your new message',
+            [['recipient_id' => (string) now()->timestamp, 'dest_addr' => '255753820520']],
+            now()
+        );
+
+        $this->assertTrue($request->successful());
+    }
 }
