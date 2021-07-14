@@ -32,3 +32,34 @@ After you have created a Beem vendor account and obtained the keys on the dashbo
 BEEM_KEY=yourApiKey
 BEEM_SECRET=yourSecretKey
 ```
+
+## Usage
+
+### SMS
+
+To send an SMS message, use the Beem facade and pass the message and recipients as arguments
+
+```php
+use Bryceandy\Beem\Facades\Beem;
+
+$recipients = [
+    [
+        'recipient_id' => (string) 1,
+        'dest_addr' => (string) 255784000000
+    ],
+    [
+        'recipient_id' => (string) 2,
+        'dest_addr' => (string) 255754000000
+    ],
+];
+    
+Beem::sms('This is the message', $recipients);
+```
+
+Optionally, you can include your custom sender name only if the request has been accepted on your vendor dashboard.
+
+The default sender name is 'INFO'.
+
+```php
+Beem::sms('Another message', $recipients, 'SENDER-NAME');
+```
