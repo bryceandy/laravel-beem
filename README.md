@@ -83,3 +83,12 @@ Fetching SMS sender names on your vendor account
 ```php 
 Beem::smsSenderNames()->json();
 ```
+
+New sender names can be requested through the API as well. Follow Beem guidelines on sender name formats
+
+```php 
+$name = 'BRYCEANDY';
+$sampleMessage = 'A sample message';
+
+Beem::requestSmsSenderName($name, $sampleMessage);
+```

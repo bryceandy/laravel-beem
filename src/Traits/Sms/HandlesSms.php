@@ -93,4 +93,21 @@ trait HandlesSms
             $data
         );
     }
+
+    /**
+     * @param string $senderid
+     * @param string $sample_content
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function requestSmsSenderName(string $senderid, string $sample_content): Response
+    {
+        return $this->call(
+            'https://apisms.beem.africa/public/v1/sender-names',
+            'POST',
+            compact('senderid', 'sample_content')
+        );
+    }
 }

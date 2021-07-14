@@ -79,4 +79,12 @@ class SmsTest extends TestCase
 
         $this->assertTrue($request->successful());
     }
+
+    /** @test */
+    public function it_can_request_sender_names()
+    {
+        $request = Beem::requestSmsSenderName('BRYCEANDY', 'A sample message');
+
+        $this->assertTrue($request->successful());
+    }
 }
