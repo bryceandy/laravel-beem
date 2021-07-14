@@ -69,7 +69,7 @@ For scheduled SMS, you can use a datetime value or `Carbon\Carbon` instance, but
 ```php
 $time = now()->addHours(10);
 
-Beem::smsWithSchedule('Reminder message', $recipients, $time);
+Beem::smsWithSchedule('Reminder message', $recipients, $time, 'SENDER-NAME');
 ```
 
 You can also check the remaining SMS balance using
