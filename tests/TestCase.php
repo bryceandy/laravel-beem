@@ -13,7 +13,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
      * @param Application $app
      * @return array
      */
-    protected function getPackageProviders(Application $app): array
+    protected function getPackageProviders($app): array
     {
         return [
             BeemBaseServiceProvider::class,
