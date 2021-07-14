@@ -15,15 +15,10 @@ class SmsTest extends TestCase
 
         // Fake all sms requests to the API
         Http::fake([
-           'https://apisms.beem.africa/v1/send' => Http::response([
-               'successful' => true,
-               'request_id' => 67,
-               'code' => 100,
-               'message' => 'Message Submitted Successfully',
-               'valid' => 1,
-               'invalid' => 0,
-               'duplicates' => 0,
-           ]),
+           'https://apisms.beem.africa/v1/send' => Http::response(json_decode(
+               file_get_contents(__DIR__ . '/../stubs/sms_response_200.json'),
+               true
+           )),
         ]);
     }
 
