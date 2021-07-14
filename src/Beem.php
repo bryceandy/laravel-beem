@@ -59,4 +59,17 @@ class Beem
             )
         );
     }
+
+    /**
+     * @return Response
+     *
+     * @throws Exceptions\ConfigurationUnavailableException
+     */
+    public function smsBalance(): Response
+    {
+        return $this->call(
+            'https://apisms.beem.africa/public/v1/vendors/balance',
+            'GET'
+        );
+    }
 }
