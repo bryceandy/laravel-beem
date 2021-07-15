@@ -21,7 +21,7 @@ trait HandlesAirtime
      */
     public function airtimeRecharge(string $dest_addr, float $amount, int $reference_id): Response
     {
-        $amount = number_format($amount, 2);
+        $amount = number_format($amount, 2, '.', '');
 
         return $this->call(
             'https://apiairtime.beem.africa/v1/transfer',
