@@ -98,8 +98,8 @@ trait HandlesContacts
     }
 
     /**
-     * @param string $mob_no
      * @param array $addressbook_id
+     * @param string $mob_no
      * @param string|null $fname
      * @param string|null $lname
      * @param string|null $title
@@ -107,6 +107,7 @@ trait HandlesContacts
      * @param string|null $mob_no2
      * @param string|null $email
      * @param string|null $country
+     * @param string|null $city
      * @param string|null $area
      * @param string|null $birth_date
      *
@@ -124,12 +125,13 @@ trait HandlesContacts
         string $mob_no2 = null,
         string $email = null,
         string $country = null,
+        string $city = null,
         string $area = null,
         string $birth_date = null
     ): Response
     {
         $data = collect(compact(
-            'fname', 'lname', 'title', 'gender', 'mob_no2', 'email', 'country', 'area', 'birth_date'
+            'fname', 'lname', 'title', 'gender', 'mob_no2', 'email', 'country', 'city', 'area', 'birth_date'
         ))
             ->reject(fn($datum) => is_null($datum))
             ->map(fn($item, $key) => $key === 'birth_date'
