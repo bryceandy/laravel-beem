@@ -198,4 +198,21 @@ trait HandlesContacts
             array_merge(compact('mob_no', 'addressbook_id'), $data)
         );
     }
+
+    /**
+     * @param array $addressbook_id
+     * @param array $contacts_id
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function deleteContactS(array $addressbook_id, array $contacts_id): Response
+    {
+        return $this->call(
+            'https://apicontacts.beem.africa/public/v1/contacts',
+            'DELETE',
+            compact('addressbook_id', 'contacts_id')
+        );
+    }
 }
