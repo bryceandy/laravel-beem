@@ -177,3 +177,12 @@ Contacts can be edited by the `contact_id`. Other required fields are address bo
 Beem::editContact($contactId, $addressBookIds, $mobileNumber, $firstName);
 Beem::editContact($contactId, $addressBookIds, $mobileNumber, $firstName, $lastName, $title, $gender, $mobileNumber2, $email, $country, $city, $area, $birthDate);
 ```
+
+Lastly, a contact can be deleted by specifying the `contact_id` and their `addressbook_id`
+
+```php 
+$contactId = ['4sgb9ddfgb'];
+$addressBookIds = ['abcdefg', '123456'];
+
+Beem::deleteContact($addressBookIds, $contactId);
+```
