@@ -2,6 +2,7 @@
 
 namespace Bryceandy\Beem;
 
+use Bryceandy\Beem\Facades\Beem;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
