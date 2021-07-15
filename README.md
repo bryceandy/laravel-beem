@@ -468,3 +468,11 @@ Check the status of a recharge request. Use the `transaction_id` obtained from t
 
 Beem::airtimeTransaction($request['transaction_id'])->json()
 ```
+
+#### Checking the airtime balance
+
+```php 
+use Bryceandy\Beem\Facades\Beem;
+
+Beem::airtimeBalance()->json();
+```
