@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "addressbook": "Default",
+      "contacts_count": 30,
+      "description": "",
+      "created": "2021-03-10T19:10:47.708Z",
+      "id": "604919718fb019194453764e"
+    },
+    {
+      "description": "Test Group",
+      "addressbook": "Trial",
+      "contacts_count": 0,
+      "created": "2021-07-08T14:28:54.155Z",
+      "id": "60e70ba6ffe24b0019011782"
+    }
+  ],
+  "pagination": {
+    "totalItems": 2,
+    "currentPage": 1,
+    "pageSize": 10,
+    "totalPages": 1,
+    "startPage": 1,
+    "endPage": 1,
+    "startIndex": 0,
+    "endIndex": 0,
+    "pages": [
+      1
+    ]
+  }
+}
