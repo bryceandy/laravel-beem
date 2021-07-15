@@ -78,6 +78,65 @@ You can also check the remaining SMS balance using
 Beem::smsBalance()->json();
 ```
 
+#### SMS Delivery Reports
+
+If you have specified a callback URL in the account profile, you can that route in any way. 
+
+Optionally, this package comes with:
+
+ * A customizable callback route `/beem/sms-delivery-report`. The prefix can be changed using a `.env` value for `BEEM_PATH`.
+   Once it is changed, the route becomes `/{env-value}/sms-delivery-report` (remember to update this callback on the vendor dashboard).
+
+
+ * An event `Bryceandy\Beem\Events\SmsDeliveryReportReceived` to collect Beem's data once they are sent to the callback. 
+   
+
+##### Collecting the delivery data
+
+To use the event above, assign a listener in the `App\Providers\EventServiceProvider`
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        \Bryceandy\Beem\Events\SmsDeliveryReportReceived::class => [
+            \App\Listeners\ProcessDeliveryReport::class,
+        ],
+    ];
+}
+```
+
+After you create the listener class, you can use Beem's delivery report
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use Bryceandy\Beem\Events\SmsDeliveryReportReceived;
+
+class ProcessDeliveryReport
+{
+    /**
+     * Handle the event.
+     *
+     * @param  SmsDeliveryReportReceived $event
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handle(SmsDeliveryReportReceived $event)
+    {
+        $requestId = $event->request['request_id'];
+        $recipientId = $event->request['recipient_id'];
+        $mobileNumber = $event->request['dest_addr'];
+        $status = $event->request['status'];
+        //...
+        
+        // After processing this report, send back an OK response to Beem
+        return response()->json([]);
+    }
+}
+```
+
 Fetching SMS sender names on your vendor account
 
 ```php 
@@ -127,7 +186,7 @@ After requesting a number on the SMS dashboard, you will have to edit it to assi
 You can use the given route in any way, but this package comes with:
 
  * A customizable callback route `/beem/outbound-sms`. The prefix can be changed using a `.env` value for `BEEM_PATH`.
- Once it is changed, the route becomes `/{en-value}/outbound-sms`.
+ Once it is changed, the route becomes `/{env-value}/outbound-sms`.
    
  
  * An event `Bryceandy\Beem\Events\TwoWaySmsCallbackReceived` to collect Beem's data once they are sent to the callback.
