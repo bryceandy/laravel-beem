@@ -35,16 +35,17 @@ trait MakesHttpRequests
     }
 
     /**
-     * @param $appName
+     * @param $app_name
      * @return Response
      *
      * @throws ConfigurationUnavailableException
      */
-    public function callBalance($appName): Response
+    public function callBalance($app_name): Response
     {
         return $this->call(
-            "https://apitopup.beem.africa/v1/credit-balance?app_name=$appName",
-            'GET'
+            "https://apitopup.beem.africa/v1/credit-balance?app_name=$app_name",
+            'GET',
+            compact('app_name')
         );
     }
 }
