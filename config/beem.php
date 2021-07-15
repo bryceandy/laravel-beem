@@ -32,6 +32,6 @@ return [
    | This path name will be used as a prefix for all routes available
    |
    */
-    'path' => env('BEEM_PATH'),
+    'path' => env('BEEM_PATH', 'beem'),
 
 ];

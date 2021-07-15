@@ -21,6 +21,6 @@ class Beem
      */
     public function pathPrefix()
     {
-        return config('beem.path', 'beem');
+        return config('beem.path');
     }
 }
