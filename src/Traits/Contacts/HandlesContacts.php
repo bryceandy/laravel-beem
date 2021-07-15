@@ -132,11 +132,10 @@ trait HandlesContacts
             'fname', 'lname', 'title', 'gender', 'mob_no2', 'email', 'country', 'area', 'birth_date'
         ))
             ->reject(fn($datum) => is_null($datum))
-            ->map(function($item, $key) {
-                if ($key === 'birth_date') {
-                    $item = Carbon::parse($item)->format('Y-m-d');
-                }
-            })
+            ->map(fn($item, $key) => $key === 'birth_date'
+                ? Carbon::parse($item)->format('Y-m-d')
+                : $item
+            )
             ->all();
 
         return $this->call(
