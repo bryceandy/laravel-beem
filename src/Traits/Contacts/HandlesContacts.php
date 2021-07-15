@@ -27,4 +27,21 @@ trait HandlesContacts
             $data
         );
     }
+
+    /**
+     * @param string $addressbook
+     * @param string $description
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function addAddressBook(string $addressbook, string $description): Response
+    {
+        return $this->call(
+            'https://apicontacts.beem.africa/public/v1/address-books',
+            'POST',
+            compact('addressbook', 'description')
+        );
+    }
 }

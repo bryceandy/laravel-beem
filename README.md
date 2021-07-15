@@ -130,3 +130,9 @@ use Bryceandy\Beem\Facades\Beem;
 Beem::addressBooks();
 Beem::addressBooks($name); // Search by address book name
 ```
+
+Use the following to add a new address book
+
+```php 
+Beem::addAddressBook($name, $description);
+```
