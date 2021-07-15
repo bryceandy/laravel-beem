@@ -146,3 +146,10 @@ Beem::editAddressBook($addressBookId, $name, $description);
 
 Beem::deleteAddressBook($addressBookId);
 ```
+
+List contacts of a specific address book. Optionally filter by first name, last name or mobile number
+
+```php 
+// $q values are either 'fname', 'lname', or 'mob_no'
+Beem::contacts($addressBookId, $q);
+```
