@@ -390,3 +390,15 @@ use Bryceandy\Beem\Facades\Beem;
 
 Beem::ussdBalance()->json();
 ```
+
+### Airtime
+
+Start by sending airtime when you have sufficient funds on the airtime dashboard
+
+```php 
+use Bryceandy\Beem\Facades\Beem;
+
+$referenceId = 123456;
+
+Beem::airtimeRecharge('255789123456', '1000.00', $referenceId);
+```
