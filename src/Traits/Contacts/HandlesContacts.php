@@ -115,8 +115,8 @@ trait HandlesContacts
      * @throws ConfigurationUnavailableException
      */
     public function addContact(
-        string $mob_no,
         array $addressbook_id,
+        string $mob_no,
         string $fname = null,
         string $lname = null,
         string $title = null,
