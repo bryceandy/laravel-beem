@@ -153,3 +153,18 @@ List contacts of a specific address book. Optionally filter by first name, last 
 // $q values are either 'fname', 'lname', or 'mob_no'
 Beem::contacts($addressBookId, $q);
 ```
+
+Adding a new contact to an address book requires a mobile number and, an array of address book IDs.
+Other fields are optional;
+
+```php 
+$addressBookIds = ['abcd123', '456efg'];
+$mobileNumber = '255784123456';
+
+Beem::addContact($addressBookIds, $mobileNumber);
+Beem::addContact($addressBookIds, $mobileNumber, $firstName, $lastName, $title, $gender, $mobileNumber2, $email, $country, $city, $area, $birthDate);
+
+// $title can be Mr./Mrs./Ms.
+// $gender can be male, female
+// $birthDate can be a datetime value or Carbon instance
+```
