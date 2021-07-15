@@ -50,4 +50,12 @@ class ConfigurationUnavailableTest extends TestCase
 
         Beem::airtimeTransaction('se56fgm');
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_check_airtime_balance()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::airtimeBalance();
+    }
 }
