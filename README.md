@@ -168,3 +168,12 @@ Beem::addContact($addressBookIds, $mobileNumber, $firstName, $lastName, $title, 
 // $gender can be male, female
 // $birthDate can be a datetime value or Carbon instance
 ```
+
+Contacts can be edited by the `contact_id`. Other required fields are address book IDs and the mobile number.
+
+```php
+// Contact IDs can be obtained from the previous method - Beem::contacts()
+
+Beem::editContact($contactId, $addressBookIds, $mobileNumber, $firstName);
+Beem::editContact($contactId, $addressBookIds, $mobileNumber, $firstName, $lastName, $title, $gender, $mobileNumber2, $email, $country, $city, $area, $birthDate);
+```
