@@ -40,6 +40,6 @@ class ConfigurationUnavailableTest extends TestCase
     {
         $this->expectException(ConfigurationUnavailableException::class);
 
-        Beem::airtimeRecharge();
+        Beem::airtimeRecharge('255784123456', 2000.00, 78832);
     }
 }
