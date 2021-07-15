@@ -1,6 +1,6 @@
 {
     "name": "bryceandy/laravel-beem",
-    "description": "A package to integrate your Laravel app with Beem API services such as: SMS, USSD, Airtime, Payment Collections, Payment Checkout, Disbursements, OTP and Contacts",
+    "description": "A package to integrate your Laravel app with Beem API services(SMS, Contacts, USSD, Airtime, Payment Collections, Payment Checkout, Disbursements and OTP).",
     "license": "MIT",
     "authors": [
         {
