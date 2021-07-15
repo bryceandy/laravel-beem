@@ -29,4 +29,20 @@ trait HandlesAirtime
             compact('dest_addr', 'amount', 'reference_id')
         );
     }
+
+    /**
+     * @param string $transaction_id
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function airtimeTransaction(string $transaction_id): Response
+    {
+        return $this->call(
+            'https://apiairtime.beem.africa/v1/transaction-status',
+            'POST',
+            compact('transaction_id')
+        );
+    }
 }
