@@ -18,4 +18,12 @@ class ConfigurationUnavailableTest extends TestCase
             [['recipient_id' => (string) now()->timestamp, 'dest_addr' => '255753820520']]
         );
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_use_address_books()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::addressBooks();
+    }
 }
