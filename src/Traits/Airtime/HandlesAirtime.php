@@ -45,4 +45,14 @@ trait HandlesAirtime
             compact('transaction_id')
         );
     }
+
+    /**
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function airtimeBalance(): Response
+    {
+        return $this->callBalance('AIRTIME');
+    }
 }
