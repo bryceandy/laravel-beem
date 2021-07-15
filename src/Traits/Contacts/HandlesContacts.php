@@ -207,7 +207,7 @@ trait HandlesContacts
      *
      * @throws ConfigurationUnavailableException
      */
-    public function deleteContactS(array $addressbook_id, array $contacts_id): Response
+    public function deleteContacts(array $addressbook_id, array $contacts_id): Response
     {
         return $this->call(
             'https://apicontacts.beem.africa/public/v1/contacts',
