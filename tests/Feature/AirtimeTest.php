@@ -49,4 +49,14 @@ class AirtimeTest extends TestCase
 
         $this->assertTrue($request->successful());
     }
+
+    /** @test */
+    public function it_can_check_airtime_balance()
+    {
+        Http::fake(fn () => Http::response([]));
+
+        $request = Beem::airtimeBalance();
+
+        $this->assertTrue($request->successful());
+    }
 }
