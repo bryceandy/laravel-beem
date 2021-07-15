@@ -189,7 +189,77 @@ Beem::deleteContact($addressBookIds, $contactId);
 
 ### USSD
 
-Checking the USSD balance
+In a USSD app, Beem will send data to the callback URL you have specified in the USSD dashboard.
+
+This package comes with an optional implementation that provides:
+
+ * A customizable route `/beem/ussd-callback` that defines the callback url. 
+   If you add a value for `BEEM_PATH` in the `.env` file, the path will now be `/{env-value}/ussd-callback`.
+
+
+ * An event `Bryceandy\Beem\Events\UssdCallbackReceived` which can be used to process the data from beem
+
+
+#### Collecting callback data
+
+Using the event above, create an event listener for example, `App\Listeners\ProcessUssdCallback` and register it in the
+`EventServiceProvider`
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        \Bryceandy\Beem\Events\UssdCallbackReceived::class => [
+            \App\Listeners\ProcessUssdCallback::class,
+        ],
+    ];
+}
+```
+
+Then in the listener class `ProcessUssdCallback`, you can collect the data for processing
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use Bryceandy\Beem\Events\UssdCallbackReceived;
+
+class ProcessUssdCallback
+{
+    /**
+     * Handle the event.
+     *
+     * @param  UssdCallbackReceived  $event
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handle(UssdCallbackReceived $event)
+    {
+        $command = $event->request['command'];
+        $msisdn = $event->request['msisdn'];
+        $session_id = $event->request['session_id'];
+        $operator = $event->request['operator'];
+        $payload = $event->request['payload'];
+        
+        // After processing this data, send your custom response to Beem
+        
+        $sampleResponse = [
+            'msisdn' => '2556730893370',
+            'operator' => 'vodacom',
+            'session_id' => '14545',
+            'command' => 'initiate',
+            'payload' => [
+                'request_id' => 0,
+                'request' => "enter phone number"
+            ],
+        ];
+        
+        return response()->json($sampleResponse);
+    }
+}
+```
+
+#### Checking the USSD balance
 
 ```php 
 use Bryceandy\Beem\Facades\Beem;
