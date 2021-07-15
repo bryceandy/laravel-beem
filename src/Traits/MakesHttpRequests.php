@@ -33,4 +33,18 @@ trait MakesHttpRequests
         ])
             ->{Str::lower($method)}($url, $payload);
     }
+
+    /**
+     * @param $appName
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function callBalance($appName): Response
+    {
+        return $this->call(
+            "https://apitopup.beem.africa/v1/credit-balance?app_name=$appName",
+            'GET'
+        );
+    }
 }
