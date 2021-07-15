@@ -374,7 +374,7 @@ class ProcessUssdCallback
             'command' => 'initiate',
             'payload' => [
                 'request_id' => 0,
-                'request' => "enter phone number"
+                'request' => 'enter phone number',
             ],
         ];
         
