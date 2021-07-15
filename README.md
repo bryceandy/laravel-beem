@@ -119,3 +119,14 @@ Beem::editSmsTemplate($templateId, $message, $smsTitle);
 
 Beem::deleteSmsTemplate($templateId);
 ```
+
+### Contacts
+
+List all address books
+
+```php 
+use Bryceandy\Beem\Facades\Beem;
+
+Beem::addressBooks();
+Beem::addressBooks($name); // Search by address book name
+```
