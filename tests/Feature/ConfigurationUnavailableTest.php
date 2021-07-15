@@ -42,4 +42,12 @@ class ConfigurationUnavailableTest extends TestCase
 
         Beem::airtimeRecharge('255784123456', 2000.00, 78832);
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_check_airtime_transactions()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::airtimeTransaction('se56fgm');
+    }
 }
