@@ -120,6 +120,72 @@ Beem::editSmsTemplate($templateId, $message, $smsTitle);
 Beem::deleteSmsTemplate($templateId);
 ```
 
+#### Two-Way SMS
+
+After requesting a number on the SMS dashboard, you will have to edit it to assign a callback URL.
+
+You can use the given route in any way, but this package comes with:
+
+ * A customizable callback route `/beem/outbound-sms`. The prefix can be changed using a `.env` value for `BEEM_PATH`.
+ Once it is changed, the route becomes `/{en-value}/outbound-sms`.
+   
+ 
+ * An event `Bryceandy\Beem\Events\TwoWaySmsCallbackReceived` to collect Beem's data once they are sent to the callback.
+
+
+##### Collecting the outbound sms data
+
+Assign an event listener for the event above in the `EventServiceProvider`
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        \Bryceandy\Beem\Events\TwoWaySmsCallbackReceived::class => [
+            \App\Listeners\ProcessOutboundSms::class,
+        ],
+    ];
+}
+```
+
+Then after creating the listener, you can collect the sms data and send a reply
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use Bryceandy\Beem\Events\TwoWaySmsCallbackReceived;
+use Bryceandy\Beem\Facades\Beem;
+
+class ProcessOutboundSms
+{
+    /**
+     * Handle the event.
+     *
+     * @param  TwoWaySmsCallbackReceived $event
+     * @return void
+     */
+    public function handle(TwoWaySmsCallbackReceived $event)
+    {
+        $from = $event->request['from'];
+        $to = $event->request['to'];
+        $text = $event->request['message']['text'];
+        //...
+        
+        // After processing the received text, send a reply in your preferred way
+        $recipients = [
+            [
+                'recipient_id' => (string) 1,
+                'dest_addr' => $from
+            ],
+        ];
+
+        Beem::sms('Your order is being processed!', $recipients, $to);
+    }
+}
+```
+
 ### Contacts
 
 List all address books
@@ -202,8 +268,7 @@ This package comes with an optional implementation that provides:
 
 #### Collecting callback data
 
-Using the event above, create an event listener for example, `App\Listeners\ProcessUssdCallback` and register it in the
-`EventServiceProvider`
+Assign an event listener for the event above in the `EventServiceProvider`
 
 ```php
 class EventServiceProvider extends ServiceProvider
@@ -230,7 +295,7 @@ class ProcessUssdCallback
     /**
      * Handle the event.
      *
-     * @param  UssdCallbackReceived  $event
+     * @param  UssdCallbackReceived $event
      * @return \Illuminate\Http\JsonResponse
      */
     public function handle(UssdCallbackReceived $event)
