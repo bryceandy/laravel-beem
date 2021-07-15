@@ -21,7 +21,7 @@ class UssdTest extends TestCase
     }
 
     /** @test */
-    public function it_can_check_ussd_balace()
+    public function it_can_check_ussd_balance()
     {
         Http::fake(fn () => Http::response([]));
 
