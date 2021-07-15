@@ -26,4 +26,12 @@ class ConfigurationUnavailableTest extends TestCase
 
         Beem::addressBooks();
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_check_ussd_balance()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::ussdBalance();
+    }
 }
