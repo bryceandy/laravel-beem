@@ -402,3 +402,59 @@ $referenceId = 123456;
 
 Beem::airtimeRecharge('255789123456', '1000.00', $referenceId);
 ```
+
+#### Airtime callback success
+
+If you have defined a callback URL in the airtime dashboard profile, Beem will send data once the transaction is completed.
+
+Optionally, you can use a callback implementation of this package which provides:
+
+ * A callback route `/beem/airtime-callback`, that can be customized by adding a `BEEM_PATH` value in the `env` file.
+ Once you set this variable, your callback route becomes `/{env-value}/airtime-callback` (remember to change this on the profile).
+   
+
+ * An event `Bryceandy\Beem\Events\AirtimeCallbackReceived` that can be used to listen to all callbacks.
+
+##### Collecting callback data
+
+Use the event above and assign a new listener in the `App\Providers\EventServiceProvider`
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        \Bryceandy\Beem\Events\AirtimeCallbackReceived::class => [
+            \App\Listeners\ProcessAirtimeCallback::class,
+        ],
+    ];
+}
+```
+
+Then after creating the `App\Listeners\ProcessAirtimeCallback` class, fetch the callback data
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use Bryceandy\Beem\Events\AirtimeCallbackReceived;
+
+class ProcessAirtimeCallback
+{
+    /**
+     * Handle the event.
+     *
+     * @param  AirtimeCallbackReceived $event
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handle(AirtimeCallbackReceived $event)
+    {
+        $code = $event->request['code'];
+        $message = $event->request['message'];
+        //...
+        
+        // After processing this data, send an OK response to Beem
+        return response()->json([]);
+    }
+}
+```
