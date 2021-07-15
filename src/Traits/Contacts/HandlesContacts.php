@@ -76,4 +76,23 @@ trait HandlesContacts
             'DELETE'
         );
     }
+
+    /**
+     * @param string $addressBookId
+     * @param string|null $q
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function contacts(string $addressBookId, string $q = null): Response
+    {
+        $data = $q ? compact('q') : [];
+
+        return $this->call(
+            "https://apicontacts.beem.africa/public/v1/contacts?addressbook_id=$addressBookId",
+            'GET',
+            $data
+        );
+    }
 }
