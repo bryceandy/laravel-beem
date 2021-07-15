@@ -18,10 +18,17 @@ class BeemBaseServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerFacades();
+
+        $this->registerRoutes();
     }
 
     private function registerFacades()
     {
         $this->app->singleton('Beem', fn($app) => new \Bryceandy\Beem\Beem);
+    }
+
+    private function registerRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 }
