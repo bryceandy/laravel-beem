@@ -4,6 +4,7 @@ namespace Bryceandy\Beem\Traits\Contacts;
 
 use Bryceandy\Beem\Exceptions\ConfigurationUnavailableException;
 use Bryceandy\Beem\Traits\MakesHttpRequests;
+use Carbon\Carbon;
 use Illuminate\Http\Client\Response;
 
 trait HandlesContacts
@@ -93,6 +94,55 @@ trait HandlesContacts
             "https://apicontacts.beem.africa/public/v1/contacts?addressbook_id=$addressBookId",
             'GET',
             $data
+        );
+    }
+
+    /**
+     * @param string $mob_no
+     * @param array $addressbook_id
+     * @param string|null $fname
+     * @param string|null $lname
+     * @param string|null $title
+     * @param string|null $gender
+     * @param string|null $mob_no2
+     * @param string|null $email
+     * @param string|null $country
+     * @param string|null $area
+     * @param string|null $birth_date
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function addContact(
+        string $mob_no,
+        array $addressbook_id,
+        string $fname = null,
+        string $lname = null,
+        string $title = null,
+        string $gender = null,
+        string $mob_no2 = null,
+        string $email = null,
+        string $country = null,
+        string $area = null,
+        string $birth_date = null
+    ): Response
+    {
+        $data = collect(compact(
+            'fname', 'lname', 'title', 'gender', 'mob_no2', 'email', 'country', 'area', 'birth_date'
+        ))
+            ->reject(fn($datum) => is_null($datum))
+            ->map(function($item, $key) {
+                if ($key === 'birth_date') {
+                    $item = Carbon::parse($item)->format('Y-m-d');
+                }
+            })
+            ->all();
+
+        return $this->call(
+            'https://apicontacts.beem.africa/public/v1/contacts',
+            'POST',
+            array_merge(compact('mob_no', 'addressbook_id'), $data)
         );
     }
 }
