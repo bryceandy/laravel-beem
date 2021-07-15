@@ -146,4 +146,56 @@ trait HandlesContacts
             array_merge(compact('mob_no', 'addressbook_id'), $data)
         );
     }
+
+    /**
+     * @param string $contact_id
+     * @param array $addressbook_id
+     * @param string $mob_no
+     * @param string|null $fname
+     * @param string|null $lname
+     * @param string|null $title
+     * @param string|null $gender
+     * @param string|null $mob_no2
+     * @param string|null $email
+     * @param string|null $country
+     * @param string|null $city
+     * @param string|null $area
+     * @param string|null $birth_date
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function editContact(
+        string $contact_id,
+        array $addressbook_id,
+        string $mob_no,
+        string $fname = null,
+        string $lname = null,
+        string $title = null,
+        string $gender = null,
+        string $mob_no2 = null,
+        string $email = null,
+        string $country = null,
+        string $city = null,
+        string $area = null,
+        string $birth_date = null
+    ): Response
+    {
+        $data = collect(compact(
+            'fname', 'lname', 'title', 'gender', 'mob_no2', 'email', 'country', 'city', 'area', 'birth_date'
+        ))
+            ->reject(fn($datum) => is_null($datum))
+            ->map(fn($item, $key) => $key === 'birth_date'
+                ? Carbon::parse($item)->format('Y-m-d')
+                : $item
+            )
+            ->all();
+
+        return $this->call(
+            "https://apicontacts.beem.africa/public/v1/contacts/$contact_id",
+            'PUT',
+            array_merge(compact('mob_no', 'addressbook_id'), $data)
+        );
+    }
 }
