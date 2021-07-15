@@ -2,6 +2,7 @@
 
 namespace Bryceandy\Beem;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class BeemBaseServiceProvider extends ServiceProvider
@@ -29,6 +30,10 @@ class BeemBaseServiceProvider extends ServiceProvider
 
     private function registerRoutes()
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        Route::group([
+            'prefix' => Beem::pathPrefix(),
+            'namespace' => 'Bryceandy\Beem\Http\Controllers',
+        ],
+        fn() => $this->loadRoutesFrom(__DIR__.'/../routes/web.php'));
     }
 }
