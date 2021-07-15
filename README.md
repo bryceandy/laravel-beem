@@ -186,3 +186,13 @@ $addressBookIds = ['abcdefg', '123456'];
 
 Beem::deleteContact($addressBookIds, $contactId);
 ```
+
+### USSD
+
+Checking the USSD balance
+
+```php 
+use Bryceandy\Beem\Facades\Beem;
+
+Beem::ussdBalance()->json();
+```
