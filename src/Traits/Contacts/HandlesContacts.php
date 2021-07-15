@@ -44,4 +44,36 @@ trait HandlesContacts
             compact('addressbook', 'description')
         );
     }
+
+    /**
+     * @param string $addressbook_id
+     * @param string $addressbook
+     * @param string $description
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function editAddressBook(string $addressbook_id, string $addressbook, string $description): Response
+    {
+        return $this->call(
+            "https://apicontacts.beem.africa/public/v1/address-books/$addressbook_id",
+            'PUT',
+            compact('addressbook', 'description')
+        );
+    }
+
+    /**
+     * @param string $addressBookId
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function deleteAddressBook(string $addressBookId): Response
+    {
+        return $this->call(
+            "https://apicontacts.beem.africa/public/v1/address-books/$addressBookId",
+            'DELETE'
+        );
+    }
 }
