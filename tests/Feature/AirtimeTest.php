@@ -19,6 +19,7 @@ class AirtimeTest extends TestCase
                 file_get_contents(__DIR__ . '/../stubs/airtime_recharge_response_200.json'),
                 true
             )),
+            'https://apiairtime.beem.africa/v1/transaction-status' => Http::response([]),
         ]);
     }
 
@@ -37,6 +38,14 @@ class AirtimeTest extends TestCase
     public function it_can_recharge_airtime()
     {
         $request = Beem::airtimeRecharge('255784123456', 2000.00, 78832);
+
+        $this->assertTrue($request->successful());
+    }
+
+    /** @test */
+    public function it_can_check_airtime_transaction_status()
+    {
+        $request = Beem::airtimeTransaction('se56fgm');
 
         $this->assertTrue($request->successful());
     }
