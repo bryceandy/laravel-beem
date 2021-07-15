@@ -33,7 +33,6 @@ class BeemBaseServiceProvider extends ServiceProvider
     {
         Route::group([
             'prefix' => Beem::pathPrefix(),
-            'namespace' => 'Bryceandy\Beem\Http\Controllers',
         ],
         fn() => $this->loadRoutesFrom(__DIR__.'/../routes/web.php'));
     }
