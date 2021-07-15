@@ -458,3 +458,13 @@ class ProcessAirtimeCallback
     }
 }
 ```
+
+#### Querying airtime transaction status
+
+Check the status of a recharge request. Use the `transaction_id` obtained from the `->json()` response of the request.
+
+```php 
+//$request = Beem::airtimeRecharge('255789123456', '1000.00', $referenceId)->json();
+
+Beem::airtimeTransaction($request['transaction_id'])->json()
+```
