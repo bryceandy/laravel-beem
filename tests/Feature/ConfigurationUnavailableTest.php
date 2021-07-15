@@ -34,4 +34,12 @@ class ConfigurationUnavailableTest extends TestCase
 
         Beem::ussdBalance();
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_recharge_airtime()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::airtimeRecharge();
+    }
 }
