@@ -31,9 +31,11 @@ class BeemBaseServiceProvider extends ServiceProvider
 
     private function registerRoutes()
     {
-        Route::group([
-            'prefix' => Beem::pathPrefix(),
-        ],
-        fn() => $this->loadRoutesFrom(__DIR__.'/../routes/web.php'));
+        $prefix = Beem::pathPrefix();
+
+        Route::group(
+            compact('prefix'),
+            fn() => $this->loadRoutesFrom(__DIR__.'/../routes/web.php')
+        );
     }
 }
