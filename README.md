@@ -136,3 +136,13 @@ Use the following to add a new address book
 ```php 
 Beem::addAddressBook($name, $description);
 ```
+
+Address books can be edited or deleted if you have their `addressbook_id`
+
+```php 
+// Obtain the address book IDs from - Beem::addressBooks();
+
+Beem::editAddressBook($addressBookId, $name, $description);
+
+Beem::deleteAddressBook($addressBookId);
+```
