@@ -19,10 +19,6 @@ class ContactsTest extends TestCase
                 file_get_contents(__DIR__ . '/../stubs/address_books_response_200.json'),
                 true
             )),
-            'https://apicontacts.beem.africa/public/v1/contacts?addressbook_id=*' => Http::response(json_decode(
-                file_get_contents(__DIR__ . '/../stubs/contacts_response_200.json'),
-                true
-            )),
         ]);
     }
 
@@ -53,7 +49,9 @@ class ContactsTest extends TestCase
     /** @test */
     public function it_can_list_contacts_of_an_address_book()
     {
-        $request = Beem::contacts('My default address book ID');
+        Http::fake(fn () => Http::response([]));
+
+        $request = Beem::contacts('123ID');
 
         $this->assertTrue($request->successful());
     }
