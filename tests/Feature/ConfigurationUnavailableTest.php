@@ -4,6 +4,7 @@ namespace Bryceandy\Beem\Tests\Feature;
 
 use Bryceandy\Beem\Exceptions\ConfigurationUnavailableException;
 use Bryceandy\Beem\Facades\Beem;
+use Bryceandy\Beem\Facades\BeemRedirect;
 use Bryceandy\Beem\Tests\TestCase;
 
 class ConfigurationUnavailableTest extends TestCase
@@ -72,7 +73,7 @@ class ConfigurationUnavailableTest extends TestCase
     {
         $this->expectException(ConfigurationUnavailableException::class);
 
-        Beem::redirectPaymentCheckout(
+        BeemRedirect::redirectPaymentCheckout(
             '1200',
             '96f9cc09-afa0-40cf-928a-d7e2b27b2408',
             'SAMPLE-12345'
