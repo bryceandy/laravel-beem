@@ -562,3 +562,62 @@ return BeemRedirect::checkout($amount, $transactionId, $referenceNumber);
 // BeemRedirect::checkout($amount, $transactionId,$referenceNumber, '255798333444');
 // Tip: always use a return statement, in order to send the use to the payment page
 ```
+
+#### Payment checkout callback
+
+This package comes with another callback implementation for the payment checkout. Available to you is:
+
+* The payment checkout event `Bryceandy\Beem\Events\PaymentCheckoutCallbackReceived`, which fires when payment checkout callbacks hit your callback URL.
+
+
+* A customizable callback route `/beem/payment-checkout`. If you decide to use this callback implementation, remember to update the callback URL on dashboard product.
+
+#### Collecting callback payment data
+
+Using the event above, create a listener and assign it in the `App\Providers\EventServiceProvider`
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        \Bryceandy\Beem\Events\PaymentCheckoutCallbackReceived::class => [
+            \App\Listeners\ProcessPaymentCheckout::class,
+        ],
+    ];
+}
+```
+
+Then after creating the listener class `App\Listeners\ProcessPaymentCheckout`, fetch the data you need
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use Bryceandy\Beem\Events\PaymentCheckoutCallbackReceived;
+
+class ProcessPaymentCheckout
+{
+    /**
+     * Handle the event.
+     *
+     * @param  PaymentCheckoutCallbackReceived $event
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handle(PaymentCheckoutCallbackReceived $event)
+    {
+        $transactionId = $event->request['transactionId'];
+        $amount = $event->request['amount'];
+        $referenceNumber = $event->request['referenceNumber'];
+        $status = $event->request['status'];
+        //...
+        
+        // After processing this data, send a response to Bpay as follows
+        $statusMessage = 'This payment has been completed';
+
+        return response()->json(
+            compact('amount', 'status', 'referenceNumber', 'statusMessage', 'transactionId')
+        );
+    }
+}
+```
