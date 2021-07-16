@@ -634,3 +634,19 @@ Beem::disburse($amount, $clientReferenceId, $accountNumber, $walletNumber, $wall
 // Optionally, specify the currency, the default is TZS
 Beem::disburse($amount, $clientReferenceId, $accountNumber, $walletNumber, $walletCode, $currency);
 ```
+
+### 8. OTP
+
+To request a pin, you require the user's number and, the app ID that you created on the OTP dashboard.
+
+```php
+use Bryceandy\Beem\Facades\Beem;
+
+Beem::requestOtp($appId, $phoneNumber)->json();
+```
+
+To verify that the user sent the correct PIN, you will send a pinID from the response of the request and, the PIN the user sent.
+
+```php
+Beem::verifyOtp($pinId, $pin);
+```
