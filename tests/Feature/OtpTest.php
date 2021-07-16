@@ -22,7 +22,7 @@ class OtpTest extends TestCase
     /** @test */
     public function it_can_request_otp()
     {
-        $request = Beem::requestOtp();
+        $request = Beem::requestOtp('432', '255768444000');
 
         $this->assertTrue($request->successful());
     }
@@ -30,7 +30,7 @@ class OtpTest extends TestCase
     /** @test */
     public function it_can_verify_otp()
     {
-        $request = Beem::verifyOtp();
+        $request = Beem::verifyOtp('92', '54443');
 
         $this->assertTrue($request->successful());
     }
