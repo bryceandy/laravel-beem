@@ -484,7 +484,7 @@ This package comes with another callback implementation for the payment collecti
  * The payment collection event `Bryceandy\Beem\Events\PaymentCollectionReceived`, which allows you to handle Bpay payments instantly.
  
 
- * A customizable callback route `/beem/payment-collection`. If you decide to use this callback implementation, remember to update the callback URL on dashboard product.
+ * A customizable callback route `/beem/payment-collection`. If you decide to use this callback implementation, remember to update the callback URL on dashboard the product.
 
 #### Collecting callback payment data
 
@@ -570,7 +570,7 @@ This package comes with another callback implementation for the payment checkout
 * The payment checkout event `Bryceandy\Beem\Events\PaymentCheckoutCallbackReceived`, which fires when payment checkout callbacks hit your callback URL.
 
 
-* A customizable callback route `/beem/payment-checkout`. If you decide to use this callback implementation, remember to update the callback URL on dashboard product.
+* A customizable callback route `/beem/payment-checkout`. If you decide to use this callback implementation, remember to update the callback URL on dashboard the product.
 
 #### Collecting callback payment data
 
