@@ -35,7 +35,7 @@ BEEM_SECRET=yourSecretKey
 
 ## Usage
 
-### SMS
+### 1. SMS
 
 To send an SMS message, use the Beem facade and pass the message and recipients as arguments
 
@@ -245,7 +245,7 @@ class ProcessOutboundSms
 }
 ```
 
-### Contacts
+### 2. Contacts
 
 List all address books
 
@@ -312,7 +312,7 @@ $addressBookIds = ['abcdefg', '123456'];
 Beem::deleteContact($addressBookIds, $contactId);
 ```
 
-### USSD
+### 3. USSD
 
 In a USSD app, Beem will send data to the callback URL you have specified in the USSD dashboard.
 
@@ -391,7 +391,7 @@ use Bryceandy\Beem\Facades\Beem;
 Beem::ussdBalance()->json();
 ```
 
-### Airtime
+### 4. Airtime
 
 Start by sending airtime when you have sufficient funds on the airtime dashboard
 
@@ -477,7 +477,7 @@ use Bryceandy\Beem\Facades\Beem;
 Beem::airtimeBalance()->json();
 ```
 
-### Payment Collection
+### 5. Payment Collection
 
 This package comes with another callback implementation for the payment collection. Available to you is:
 
@@ -544,7 +544,7 @@ use Bryceandy\Beem\Facades\Beem;
 Beem::paymentCollectionBalance()->json();
 ```
 
-### Payment Checkout
+### 6. Payment Checkout
 
 The package provides an eloquent functionality to handle Beem's payment checkout by redirection.
 
