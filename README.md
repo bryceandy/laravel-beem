@@ -543,3 +543,21 @@ use Bryceandy\Beem\Facades\Beem;
 
 Beem::paymentCollectionBalance()->json();
 ```
+
+### Payment Checkout
+
+The package provides an eloquent functionality to handle Beem's payment checkout by redirection.
+
+Collect the required data and use the redirect facade anywhere in your controller or classes;
+
+```php
+use Bryceandy\Beem\Facades\BeemRedirect;
+
+$amount = '2000';
+$transactionId = '96f9cc09-afa0-40cf-928a-d7e2b27b2408';
+$referenceNumber = 'SAMPLE-12345';
+
+return BeemRedirect::checkout($amount, $transactionId,$referenceNumber);
+// Or include the mobile number
+// BeemRedirect::checkout($amount, $transactionId,$referenceNumber, '255798333444');
+```
