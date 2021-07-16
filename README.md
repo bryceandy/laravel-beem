@@ -87,7 +87,7 @@ Beem::smsBalance()->json();
 
 #### SMS Delivery Reports
 
-If you have specified a callback URL in the account profile, you can that route in any way. 
+If you have specified a callback URL in the account profile, you can use that route in any way. 
 
 Optionally, this package comes with:
 
