@@ -79,4 +79,18 @@ class ConfigurationUnavailableTest extends TestCase
             'SAMPLE-12345'
         );
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_disburse_payments()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::disburse(
+            '20000',
+            '11212919190101',
+            'f09dc0d3',
+            '255701000000',
+            'ABC12345'
+        );
+    }
 }
