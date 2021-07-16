@@ -535,3 +535,11 @@ class ProcessPaymentCollection
     }
 }
 ```
+
+#### Checking the payment collection balance
+
+```php 
+use Bryceandy\Beem\Facades\Beem;
+
+Beem::paymentCollectionBalance()->json();
+```
