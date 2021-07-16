@@ -93,4 +93,20 @@ class ConfigurationUnavailableTest extends TestCase
             'ABC12345'
         );
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_request_otp()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::requestOtp('432', '255768444000');
+    }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_verify_otp()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::verifyOtp('92', '54443');
+    }
 }
