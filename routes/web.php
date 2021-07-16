@@ -1,6 +1,7 @@
 <?php
 
 use Bryceandy\Beem\Http\Controllers\AirtimeCallbackController;
+use Bryceandy\Beem\Http\Controllers\PaymentCheckoutCallbackController;
 use Bryceandy\Beem\Http\Controllers\PaymentCollectionController;
 use Bryceandy\Beem\Http\Controllers\SmsDeliveryReportController;
 use Bryceandy\Beem\Http\Controllers\TwoWaySmsCallbackController;
@@ -21,3 +22,6 @@ Route::post('airtime-callback', AirtimeCallbackController::class)
 
 Route::post('payment-collection', PaymentCollectionController::class)
     ->name('beem.payment-collection');
+
+Route::post('payment-checkout', PaymentCheckoutCallbackController::class)
+    ->name('beem.payment-checkout');
