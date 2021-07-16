@@ -24,7 +24,8 @@ class PaymentCheckoutTest extends TestCase
     public function it_can_redirect_to_payment_checkout()
     {
         Http::fake([
-            'https://checkout.beem.africa/v1/checkout' . '*' => Http::response(json_decode(
+            'https://checkout.beem.africa/v1/checkout?amount=1200&transaction_id=96f9cc09-afa0-40cf-928a-d7e2b27b2408&reference_number=SAMPLE-12345'
+            => Http::response(json_decode(
                 file_get_contents(__DIR__ . '/../stubs/payment_checkout_response_200.json'),
                 true
             ))
