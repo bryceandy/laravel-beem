@@ -1,5 +1,10 @@
 # Beem package for Laravel apps
 
+[![Actions Status](https://github.com/bryceandy/laravel-beem/workflows/Tests/badge.svg)](https://github.com/bryceandy/laravel-beem/actions)
+<a href="https://packagist.org/packages/bryceandy/laravel-beem"><img src="https://poser.pugx.org/bryceandy/laravel-beem/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/bryceandy/laravel-beem"><img src="https://poser.pugx.org/bryceandy/laravel-beem/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/bryceandy/laravel-beem"><img src="https://poser.pugx.org/bryceandy/laravel-beem/license.svg" alt="License"></a>
+
 This package enables Laravel developers to integrate their websites/APIs with all Beem API services
 
 ## Installation
