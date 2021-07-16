@@ -36,8 +36,6 @@ class PaymentCheckoutTest extends TestCase
             'SAMPLE-12345'
         );
 
-        $this->assertTrue($request->successful());
-
-        $this->assertStringContainsString('https://', $request->json()['src']);
+        $request->assertRedirect();
     }
 }
