@@ -66,4 +66,16 @@ class ConfigurationUnavailableTest extends TestCase
 
         Beem::paymentCollectionBalance();
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_redirect_to_payment_checkout()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::redirectPaymentCheckout(
+            '1200',
+            '96f9cc09-afa0-40cf-928a-d7e2b27b2408',
+            'SAMPLE-12345'
+        );
+    }
 }
