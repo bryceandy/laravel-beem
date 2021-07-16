@@ -27,6 +27,8 @@ class BeemBaseServiceProvider extends ServiceProvider
     private function registerFacades()
     {
         $this->app->singleton('Beem', fn($app) => new \Bryceandy\Beem\Beem);
+
+        $this->app->singleton('BeemRedirect', fn($app) => new \Bryceandy\Beem\BeemRedirect);
     }
 
     private function registerRoutes()
