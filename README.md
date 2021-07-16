@@ -8,7 +8,7 @@ Pre-installation requirements
 
  * Supports Laravel projects starting version 8.*
  * Minimum PHP version is 7.4
- * Your server must have the cURL PHP extension installed
+ * Your server must have the cURL PHP extension (ext-curl) installed
 
 Then proceed to install
 
