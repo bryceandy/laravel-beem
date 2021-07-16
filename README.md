@@ -621,3 +621,16 @@ class ProcessPaymentCheckout
     }
 }
 ```
+
+### 7. Disbursements
+
+To send payments by disbursements, use the facade with appropriate arguments
+
+```php
+use Bryceandy\Beem\Facades\Beem;
+
+Beem::disburse($amount, $clientReferenceId, $accountNumber, $walletNumber, $walletCode);
+
+// Optionally, specify the currency, the default is TZS
+Beem::disburse($amount, $clientReferenceId, $accountNumber, $walletNumber, $walletCode, $currency);
+```
