@@ -58,4 +58,12 @@ class ConfigurationUnavailableTest extends TestCase
 
         Beem::airtimeBalance();
     }
+
+    /** @test */
+    public function it_requires_authentication_credentials_to_check_payment_collection_balance()
+    {
+        $this->expectException(ConfigurationUnavailableException::class);
+
+        Beem::paymentCollectionBalance();
+    }
 }
