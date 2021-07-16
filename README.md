@@ -557,7 +557,8 @@ $amount = '2000';
 $transactionId = '96f9cc09-afa0-40cf-928a-d7e2b27b2408';
 $referenceNumber = 'SAMPLE-12345';
 
-return BeemRedirect::checkout($amount, $transactionId,$referenceNumber);
+return BeemRedirect::checkout($amount, $transactionId, $referenceNumber);
 // Or include the mobile number
 // BeemRedirect::checkout($amount, $transactionId,$referenceNumber, '255798333444');
+// Tip: always use a return statement, in order to send the use to the payment page
 ```
