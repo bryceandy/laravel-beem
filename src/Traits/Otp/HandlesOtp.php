@@ -26,4 +26,21 @@ trait HandlesOtp
             compact('appId', 'msisdn')
         );
     }
+
+    /**
+     * @param string $pinId
+     * @param string $pin
+     *
+     * @return Response
+     *
+     * @throws ConfigurationUnavailableException
+     */
+    public function verifyOtp(string $pinId, string $pin): Response
+    {
+        return $this->call(
+            'https://apiotp.beem.africa/v1/verify',
+            'POST',
+            compact('pinId', 'pin')
+        );
+    }
 }
