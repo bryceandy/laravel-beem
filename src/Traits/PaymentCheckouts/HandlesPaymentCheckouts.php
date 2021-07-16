@@ -23,7 +23,7 @@ trait HandlesPaymentCheckouts
      *
      * @throws ConfigurationUnavailableException
      */
-    public function redirectPaymentCheckout(
+    public function checkout(
         string $amount,
         string $transaction_id,
         string $reference_number,

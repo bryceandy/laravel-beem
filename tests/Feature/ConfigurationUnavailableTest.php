@@ -73,7 +73,7 @@ class ConfigurationUnavailableTest extends TestCase
     {
         $this->expectException(ConfigurationUnavailableException::class);
 
-        BeemRedirect::redirectPaymentCheckout(
+        BeemRedirect::checkout(
             '1200',
             '96f9cc09-afa0-40cf-928a-d7e2b27b2408',
             'SAMPLE-12345'
