@@ -5,6 +5,7 @@ namespace Bryceandy\Beem;
 use Bryceandy\Beem\Traits\Airtime\HandlesAirtime;
 use Bryceandy\Beem\Traits\Contacts\HandlesContacts;
 use Bryceandy\Beem\Traits\Disbursements\HandlesDisbursements;
+use Bryceandy\Beem\Traits\Otp\HandlesOtp;
 use Bryceandy\Beem\Traits\PaymentCollections\HandlesPaymentCollections;
 use Bryceandy\Beem\Traits\Sms\HandlesSms;
 use Bryceandy\Beem\Traits\Ussd\HandlesUssd;
@@ -16,6 +17,7 @@ class Beem
     use HandlesAirtime;
     use HandlesContacts;
     use HandlesDisbursements;
+    use HandlesOtp;
     use HandlesPaymentCollections;
     use HandlesSms;
     use HandlesUssd;
