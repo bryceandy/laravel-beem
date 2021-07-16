@@ -665,7 +665,7 @@ To debug the `Bryceandy\Beem\Facades\Beem` facade
  * Use the `->json()` method to fetch data of the response.
 
 
- * Use the boolean `->successful()` method to see if the request was successful, or
+ * Use the boolean `->successful()` method to see if the request was successful
 
 ## License
 
