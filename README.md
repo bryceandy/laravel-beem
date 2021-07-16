@@ -1,4 +1,4 @@
-<p align="center"><img src="https://beem.africa/wp-content/uploads/2020/12/Beem-menu-logo-01.svg" width="400" style="background-color: #33b1ba;border-radius: 4px" /></p>
+![Beem logo](beem.png)
 
 # Beem package for Laravel apps
 
