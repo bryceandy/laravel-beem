@@ -650,3 +650,16 @@ To verify that the user sent the correct PIN, you will send a pinID from the res
 ```php
 Beem::verifyOtp($pinId, $pin);
 ```
+
+## Debugging Tips
+
+To debug the `Bryceandy\Beem\Facades\Beem` facade
+
+ * Use the `->json()` method to fetch data of the response.
+
+
+ * Use the boolean `->successful()` method to see if the request was successful, or
+
+## License
+
+MIT license
