@@ -4,7 +4,6 @@ namespace Bryceandy\Beem\Tests\Feature;
 
 use Bryceandy\Beem\Facades\Beem;
 use Bryceandy\Beem\Tests\TestCase;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Http;
 
 class OtpTest extends TestCase
@@ -18,17 +17,6 @@ class OtpTest extends TestCase
             'https://apiotp.beem.africa/v1/request' => Http::response([]),
             'https://apiotp.beem.africa/v1/verify' => Http::response([]),
         ]);
-    }
-
-    /**
-     * Define environment setup.
-     *
-     * @param Application $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('beem.api_key', '12345');
-        $app['config']->set('beem.secret_key', 'abc');
     }
 
     /** @test */

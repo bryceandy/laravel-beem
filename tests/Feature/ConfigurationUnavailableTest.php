@@ -6,9 +6,21 @@ use Bryceandy\Beem\Exceptions\ConfigurationUnavailableException;
 use Bryceandy\Beem\Facades\Beem;
 use Bryceandy\Beem\Facades\BeemRedirect;
 use Bryceandy\Beem\Tests\TestCase;
+use Illuminate\Foundation\Application;
 
 class ConfigurationUnavailableTest extends TestCase
 {
+    /**
+     * Define environment setup.
+     *
+     * @param Application $app
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('beem.api_key', null);
+        $app['config']->set('beem.secret_key', null);
+    }
+
     /** @test */
     public function it_requires_authentication_credentials_to_send_sms()
     {
