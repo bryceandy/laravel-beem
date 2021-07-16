@@ -476,3 +476,62 @@ use Bryceandy\Beem\Facades\Beem;
 
 Beem::airtimeBalance()->json();
 ```
+
+### Payment Collection
+
+This package comes with another callback implementation for the payment collection. Available to you is:
+
+ * The payment collection event `Bryceandy\Beem\Events\PaymentCollectionReceived`, which allows you to handle Bpay payments instantly.
+ 
+
+ * A customizable callback route `/beem/payment-collection`. If you decide to use this callback implementation, remember to update the callback URL on dashboard product.
+
+#### Collecting callback payment data
+
+Using the event above, create a listener to handle the callback and assign them in the `App\Providers\EventServiceProvider`
+
+```php
+class EventServiceProvider extends ServiceProvider
+{
+    protected $listen = [
+        \Bryceandy\Beem\Events\PaymentCollectionReceived::class => [
+            \App\Listeners\ProcessPaymentCollection::class,
+        ],
+    ];
+}
+```
+
+Then after creating the listener class `App\Listeners\ProcessPaymentCollection`, fetch the data you need
+
+```php
+<?php
+
+namespace App\Listeners;
+
+use Bryceandy\Beem\Events\PaymentCollectionReceived;
+
+class ProcessPaymentCollection
+{
+    /**
+     * Handle the event.
+     *
+     * @param  PaymentCollectionReceived $event
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function handle(PaymentCollectionReceived $event)
+    {
+        $transactionId = $event->request['transaction_id'];
+        $amount = $event->request['amount_collected'];
+        $subscriber = $event->request['subscriber_msisdn'];
+        $network = $event->request['network_name'];
+        $referenceNumber = $event->request['reference_number'];
+        //...
+        
+        // After processing this data, send a response to Bpay 
+        return response()->json([
+            'transaction_id' => $transactionId,
+            'successful' => true,
+        ]);
+    }
+}
+```
