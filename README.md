@@ -1,4 +1,4 @@
-<p align="center"><img src="https://beem.africa/wp-content/uploads/2020/12/Beem-menu-logo-01.svg" width="400" style="background: #33b1ba;border-radius: 4px" /></p>
+<p align="center"><img src="https://beem.africa/wp-content/uploads/2020/12/Beem-menu-logo-01.svg" width="400" style="background-color: #33b1ba;border-radius: 4px" /></p>
 
 # Beem package for Laravel apps
 
@@ -655,7 +655,7 @@ Beem::requestOtp($appId, $phoneNumber)->json();
 To verify that the user sent the correct PIN, you will send a pinID from the response of the request and, the PIN the user sent.
 
 ```php
-Beem::verifyOtp($pinId, $pin);
+Beem::verifyOtp($pinId, $pin)->json();
 ```
 
 ## Debugging Tips
