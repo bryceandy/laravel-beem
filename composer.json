@@ -8,6 +8,8 @@
             "email": "hello@bryceandy.com"
         }
     ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "require": {
         "php": ">=7.4",
         "ext-curl": "*",
