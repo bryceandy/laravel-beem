@@ -4,6 +4,7 @@ namespace Bryceandy\Beem;
 
 use Bryceandy\Beem\Traits\Airtime\HandlesAirtime;
 use Bryceandy\Beem\Traits\Contacts\HandlesContacts;
+use Bryceandy\Beem\Traits\PaymentCollections\HandlesPaymentCollections;
 use Bryceandy\Beem\Traits\Sms\HandlesSms;
 use Bryceandy\Beem\Traits\Ussd\HandlesUssd;
 use Illuminate\Config\Repository;
@@ -13,6 +14,7 @@ class Beem
 {
     use HandlesAirtime;
     use HandlesContacts;
+    use HandlesPaymentCollections;
     use HandlesSms;
     use HandlesUssd;
 
