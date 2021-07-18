@@ -52,11 +52,11 @@ use Bryceandy\Beem\Facades\Beem;
 $recipients = [
     [
         'recipient_id' => (string) 1,
-        'dest_addr' => (string) 255784000000
+        'dest_addr' => (string) 255784000000,
     ],
     [
         'recipient_id' => (string) 2,
-        'dest_addr' => (string) 255754000000
+        'dest_addr' => (string) 255754000000,
     ],
 ];
     
