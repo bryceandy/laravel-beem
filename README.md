@@ -259,8 +259,8 @@ List all address books
 ```php 
 use Bryceandy\Beem\Facades\Beem;
 
-Beem::addressBooks();
-Beem::addressBooks($name); // Search by address book name
+Beem::addressBooks()->json();
+Beem::addressBooks($name)->json(); // Search by address book name
 ```
 
 Use the following to add a new address book
@@ -283,7 +283,7 @@ List contacts of a specific address book. Optionally filter by first name, last 
 
 ```php 
 // $q values are either 'fname', 'lname', or 'mob_no'
-Beem::contacts($addressBookId, $q);
+Beem::contacts($addressBookId, $q)->json();
 ```
 
 Adding a new contact to an address book requires a mobile number and, an array of address book IDs.
