@@ -17,8 +17,10 @@ class ConfigurationUnavailableTest extends TestCase
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('beem.api_key', null);
-        $app['config']->set('beem.secret_key', null);
+        $app['config']->set([
+            'beem.api_key' => null,
+            'beem.secret_key' => null,
+        ]);
     }
 
     /** @test */
