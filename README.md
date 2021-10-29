@@ -9,6 +9,38 @@
 
 This package enables Laravel developers to integrate their websites/APIs with all Beem API services
 
+**Table of Contents**
+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+    1. [SMS](#1-sms)
+        - [SMS Delivery Reports](#sms-delivery-reports)
+        - [Collecting the delivery data](#collecting-the-delivery-data)
+        - [SMS Templates](#sms-templates)
+        - [Two-Way SMS](#two-way-sms)
+            - [Collecting the outbound SMS data](#collecting-the-outbound-sms-data)
+    2. [Contacts](#2-contacts)
+    3. [USSD](#3-ussd)
+        - [Collecting callback data](#collecting-ussd-callback-data)
+        - [Checking the balance](#checking-the-ussd-balance)
+    4. [Airtime](#4-airtime)
+        - [Airtime callback success](#airtime-callback-success)
+        - [Collecting callback data](#collecting-airtime-callback-data)
+        - [Querying airtime transaction status](#querying-airtime-transaction-status)
+        - [Checking the balance](#checking-the-airtime-balance)
+    5. [Payment Collection](#5-payment-collection)
+        - [Collecting callback data](#collecting-payment-collection-callback-data)
+        - [Checking the balance](#checking-the-payment-collection-balance)
+    6. [Payment Checkout](#6-payment-checkout)
+        - [Payment checkout callback](#payment-checkout-callback)
+        - [Collecting callback data](#collecting-payment-checkout-callback-data)
+    7. [Disbursements](#7-disbursements)
+    8. [OTP](#8-otp)
+- [Debugging Tips](#debugging-tips)
+- [License](#license)
+- [Contributing](#contributing)
+
 ## Installation
 
 Pre-installation requirements
@@ -332,7 +364,7 @@ This package comes with an optional implementation that provides:
  * An event `Bryceandy\Beem\Events\UssdCallbackReceived` which can be used to process the data from beem
 
 
-#### Collecting callback data
+#### Collecting USSD callback data
 
 Assign an event listener for the event above in the `EventServiceProvider`
 
@@ -422,7 +454,7 @@ Optionally, you can use a callback implementation of this package which provides
 
  * An event `Bryceandy\Beem\Events\AirtimeCallbackReceived` that can be used to listen to all callbacks.
 
-##### Collecting callback data
+##### Collecting airtime callback data
 
 Use the event above and assign a new listener in the `App\Providers\EventServiceProvider`
 
@@ -493,7 +525,7 @@ This package comes with another callback implementation for the payment collecti
 
  * A customizable callback route `/beem/payment-collection`. If you decide to use this callback implementation, remember to update the callback URL on dashboard the product.
 
-#### Collecting callback payment data
+#### Collecting payment collection callback data
 
 Using the event above, create a listener to handle the callback and assign them in the `App\Providers\EventServiceProvider`
 
@@ -579,7 +611,7 @@ This package comes with another callback implementation for the payment checkout
 
 * A customizable callback route `/beem/payment-checkout`. If you decide to use this callback implementation, remember to update the callback URL on dashboard the product.
 
-#### Collecting callback payment data
+#### Collecting payment checkout callback data
 
 Using the event above, create a listener and assign it in the `App\Providers\EventServiceProvider`
 
@@ -670,3 +702,7 @@ To debug the `Bryceandy\Beem\Facades\Beem` facade
 ## License
 
 MIT license
+
+## Contributing
+
+If you spot any bugs or want to add a feature, feel free to send a detailed PR with working tests to improve the project
